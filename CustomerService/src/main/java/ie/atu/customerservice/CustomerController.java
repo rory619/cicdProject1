@@ -11,7 +11,7 @@ import java.util.List;
 @RequestMapping("/customers")
 public class CustomerController {
 
-    private List<Customer> customers = new ArrayList<>(Arrays.asList(
+  /*  private List<Customer> customers = new ArrayList<>(Arrays.asList(
             new Customer("1", "Alice", "alice@example.com"),
             new Customer("2", "Bob", "bob@example.com")
     ));
@@ -19,6 +19,6 @@ public class CustomerController {
     @GetMapping
     public List<Customer> getAllCustomers() {
         return customers;
-    }
+    }*/
 }
 

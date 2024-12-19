@@ -3,33 +3,31 @@ package ie.atu.customerservice;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.*;
 
 @Entity
 
 public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private String id;
+    private Long id;
     private String name;
     private String email;
 
     // Constructor with parameters
     public Customer() {}
-    public Customer(String id, String name, String email) {
+    public Customer(Long id, String name, String email) {
         this.id = id;
         this.name = name;
         this.email = email;
     }
-
-    // Getters and setters (optional but recommended for proper access to the fields)
-    public String getId() {
+    public Long id() {
         return id;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
+    // Getters and setters (optional but recommended for proper access to the fields)
+
 
     public String getName() {
         return name;
