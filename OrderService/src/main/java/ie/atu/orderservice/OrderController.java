@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/orders")
-public class OrderController {
+public class OrderController {/*
     private List<Order> orders = new ArrayList<>(Arrays.asList(
             new Order("1", "1", "1", 2),
             new Order("2", "2", "1", 3)
@@ -19,5 +19,5 @@ public class OrderController {
     @GetMapping
     public List<Order> getAllOrders() {
         return orders;
-    }
+    }*/
 }
