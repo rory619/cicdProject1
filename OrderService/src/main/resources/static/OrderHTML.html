@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order List</title>
+</head>
+<body>
+<h1>Order List</h1>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Customer ID</th>
+        <th>Book ID</th>
+        <th>Quantity</th>
+    </tr>
+    </thead>
+    <tbody id="orderTableBody">
+
+    </tbody>
+</table>
+
+<script>
+
+    function fetchOrders() {
+
+        const apiUrl = "http://localhost:8083/orders/all";
+
+        // Fetch the order data
+        fetch(apiUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Network response was not ok " + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Populate the table with the data
+                const tableBody = document.getElementById("orderTableBody");
+                tableBody.innerHTML = ""; // Clear any existing data
+
+                data.forEach(order => {
+                    const row = `
+                            <tr>
+                                <td>${order.id}</td>
+                                <td>${order.customerId}</td>
+                                <td>${order.bookId}</td>
+                                <td>${order.quantity}</td>
+                            </tr>
+                        `;
+                    tableBody.insertAdjacentHTML("beforeend", row);
+                });
+            })
+            .catch(error => {
+                console.error("Error fetching orders:", error);
+            });
+    }
+
+    // Call the function when the page loads
+    window.onload = fetchOrders;
+</script>
+</body>
+</html>
