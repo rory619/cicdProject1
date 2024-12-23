@@ -1,18 +1,19 @@
 package ie.atu.bookservice11;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
-
+@Service
 public class BookService {
 
-    private BookRepository bookRepository;  // Inject the repository
+    private final BookRepository bookRepository;
 
-    public List<Book> getAllBooks() {
-        return bookRepository.findAll();  // Fetch all books from the database
+    public BookService(BookRepository bookRepository) {
+        this.bookRepository = bookRepository;
     }
 
-    public Book getBookById(Long id) {
-        return bookRepository.findById(id).orElse(null);  // Find a book by its ID
+    public List<Book> getAllBooks() {
+        return bookRepository.findAll(); // Fetch books from the database
     }
 }

@@ -1,19 +1,27 @@
 package ie.atu.orderservice;
 
-
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@RestController
+@RequestMapping("/orders")
+@CrossOrigin(origins = {"http://localhost:8083", "http://localhost:8082"})
 public class OrderAPIController {
-    @Autowired
-    private OrderService orderService;
 
-    @GetMapping("/api/orders")
+    private final OrderService orderService;
+
+    public OrderAPIController(OrderService orderService) {
+        this.orderService = orderService;
+    }
+
+    @GetMapping("/all")
     public List<Order> getAllOrders() {
-        return orderService.getAllOrders(); // Get all orders from the service layer
+        return orderService.getAllOrders();
+    }
+
+    @GetMapping("/")
+    public String index() {
+        return "Welcome to the Order Service API";
     }
 }

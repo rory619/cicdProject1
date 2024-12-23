@@ -1,60 +1,50 @@
 package ie.atu.orderservice;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
-import jakarta.persistence.*;
+import jakarta.persistence.Id;
+
 @Entity
-@Table(name = "Table_1")
 public class Order {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String customerId;
-    private String bookId;
-    private int quantity;
+    private Long bookId;      // Book ID (foreign key)
+    private Long customerId;  // Customer ID (foreign key)
+    private int quantity;     // Quantity of the book in the order
 
-    // No-argument constructor for JPA
-    public Order() {
-    }
+    // Constructor with parameters
+    public Order() {}
 
-    // Constructor with arguments
-    public Order(long id, String customerId, String bookId, int quantity) {
+    public Order(Long id, Long bookId, Long customerId, int quantity) {
         this.id = id;
-        this.customerId = customerId;
         this.bookId = bookId;
+        this.customerId = customerId;
         this.quantity = quantity;
     }
-
-    // Getter and Setter for 'id'
-
 
     public Long getId() {
         return id;
     }
 
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    // Getter and Setter for 'customerId'
-    public String getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(String customerId) {
-        this.customerId = customerId;
-    }
-
-    // Getter and Setter for 'bookId'
-    public String getBookId() {
+    public Long getBookId() {
         return bookId;
     }
 
-    public void setBookId(String bookId) {
+    public void setBookId(Long bookId) {
         this.bookId = bookId;
     }
 
-    // Getter and Setter for 'quantity'
+    public Long getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(Long customerId) {
+        this.customerId = customerId;
+    }
+
     public int getQuantity() {
         return quantity;
     }
