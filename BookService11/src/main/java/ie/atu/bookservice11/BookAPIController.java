@@ -9,8 +9,9 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/books")
-@CrossOrigin(origins = {"http://localhost:8083", "http://localhost:8082","http://localhost:63342"}) // Allow frontend access
-//@CrossOrigin(origins = "http://localhost:63342")
+@CrossOrigin(origins = {"http://localhost:8083", "http://localhost:8082","http://localhost:63342"})
+
+
 public class BookAPIController {
 
     private final BookService bookService;
@@ -21,6 +22,7 @@ public class BookAPIController {
 
     @GetMapping("/all")
     public List<Book> getAllBooks() {
-        return bookService.getAllBooks(); // Return all books
+        return bookService.getAllBooks();
+
     }
 }

@@ -1,75 +1,105 @@
+
 body {
-    font-family: 'Arial', sans-serif;
+    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: #f4f4f4;
+    background-color: #f9f9f9;
     color: #333;
 }
 
-header {
-    text-align: center;
-    padding: 20px;
-    background-color: #4CAF50;
+
+.header {
+    background-color: #007BFF;
     color: white;
-    font-size: 2em;
+    text-align: center;
+    padding: 20px 0;
 }
 
-#buttons {
+
+.buttons-section {
     display: flex;
     justify-content: center;
-    margin-top: 20px;
+    gap: 10px;
+    margin: 20px 0;
 }
 
-button {
+.service-btn {
     padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-    background-color: #4CAF50;
+    background-color: #007BFF;
     color: white;
     border: none;
     border-radius: 5px;
-    margin: 0 10px;
-    transition: background-color 0.3s;
+    cursor: pointer;
 }
 
-button:hover {
-    background-color: #45a049;
+.service-btn:hover {
+    background-color: #0056b3;
 }
 
-#data-display {
-    margin: 30px auto;
-    max-width: 1000px;
-    padding: 20px;
-    background-color: white;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+
+.crud-section {
+    text-align: center;
+    margin: 20px 0;
 }
 
-table {
-    width: 100%;
+.crud-btn {
+    margin: 10px;
+    padding: 10px 15px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.crud-btn:hover {
+    background-color: #218838;
+}
+
+
+.data-table {
+    width: 80%;
+    margin: 20px auto;
     border-collapse: collapse;
 }
 
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
+.data-table thead {
+    background-color: #007BFF;
+    color: white;
 }
 
-th {
+.data-table th, .data-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.data-table tr:nth-child(even) {
     background-color: #f2f2f2;
 }
 
-tbody tr:hover {
-    background-color: #f1f1f1;
+.data-table tr:hover {
+    background-color: #ddd;
 }
 
-@media (max-width: 768px) {
-    table {
-        font-size: 14px;
-    }
 
-    button {
-        font-size: 14px;
-    }
+.form-section {
+    margin: 20px auto;
+    width: 80%;
+}
+
+.form-section form div {
+    margin-bottom: 10px;
+}
+
+.form-section form label {
+    font-weight: bold;
+}
+
+.form-section form input {
+    width: 100%;
+    padding: 8px;
+    margin: 5px 0;
+    border: 1px solid #ddd;
+    border-radius: 5px;
 }

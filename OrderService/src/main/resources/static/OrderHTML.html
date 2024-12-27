@@ -11,8 +11,8 @@
     <thead>
     <tr>
         <th>ID</th>
-        <th>Customer ID</th>
         <th>Book ID</th>
+        <th>Customer ID</th>
         <th>Quantity</th>
     </tr>
     </thead>
@@ -26,8 +26,6 @@
     function fetchOrders() {
 
         const apiUrl = "http://localhost:8083/orders/all";
-
-        // Fetch the order data
         fetch(apiUrl)
             .then(response => {
                 if (!response.ok) {
@@ -36,9 +34,9 @@
                 return response.json();
             })
             .then(data => {
-                // Populate the table with the data
                 const tableBody = document.getElementById("orderTableBody");
-                tableBody.innerHTML = ""; // Clear any existing data
+                tableBody.innerHTML = "";
+
 
                 data.forEach(order => {
                     const row = `
@@ -56,8 +54,6 @@
                 console.error("Error fetching orders:", error);
             });
     }
-
-    // Call the function when the page loads
     window.onload = fetchOrders;
 </script>
 </body>
