@@ -4,9 +4,10 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
+@RequestMapping("/api/orders")
 @RestController
-@RequestMapping("/orders")
-@CrossOrigin(origins = {"http://localhost:8083", "http://localhost:8082"})
+@CrossOrigin(origins = {"http://localhost:8083", "http://localhost:8082", "http://localhost:63342"})
 public class OrderAPIController {
 
     private final OrderService orderService;

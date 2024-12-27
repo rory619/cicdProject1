@@ -1,24 +1,22 @@
 package ie.atu.orderservice;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
+@Table(name = "orders")
 public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private Long bookId;      // Book ID (foreign key)
-    private Long customerId;  // Customer ID (foreign key)
-    private int quantity;     // Quantity of the book in the order
+    private String bookId;
+    private Long customerId;
+    private int quantity;
 
-    // Constructor with parameters
+
     public Order() {}
 
-    public Order(Long id, Long bookId, Long customerId, int quantity) {
+    public Order(Long id, String bookId, Long customerId, int quantity) {
         this.id = id;
         this.bookId = bookId;
         this.customerId = customerId;
@@ -29,23 +27,28 @@ public class Order {
         return id;
     }
 
-    public Long getBookId() {
+    public String getBookId() {
+
         return bookId;
     }
 
-    public void setBookId(Long bookId) {
+    public void setBookId(String bookId) {
+
         this.bookId = bookId;
     }
 
     public Long getCustomerId() {
+
         return customerId;
     }
 
     public void setCustomerId(Long customerId) {
+
         this.customerId = customerId;
     }
 
     public int getQuantity() {
+
         return quantity;
     }
 

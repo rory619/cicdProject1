@@ -1,9 +1,6 @@
 // Function to fetch customer data and populate the table
 function fetchCustomers() {
-    // API endpoint for CustomerService
-    const customerApiUrl = "http://localhost:8082/customers/all"; // Adjust if CustomerService runs on a different port
-
-    // Fetch the customer data
+    const customerApiUrl = "http://localhost:8082/customers/all"
     fetch(customerApiUrl)
         .then(response => {
             if (!response.ok) {
@@ -12,9 +9,8 @@ function fetchCustomers() {
             return response.json();
         })
         .then(data => {
-            // Populate the customer table with the fetched data
             const customerTableBody = document.getElementById("customerTableBody");
-            customerTableBody.innerHTML = ""; // Clear any existing data
+            customerTableBody.innerHTML = "";
 
             data.forEach(customer => {
                 const row = `
@@ -32,8 +28,8 @@ function fetchCustomers() {
         });
 }
 
-// Call the function when the page loads
+
 window.onload = function () {
-    fetchOrders(); // Fetch and display order data
-    fetchCustomers(); // Fetch and display customer data
+    fetchOrders();
+    fetchCustomers();
 };

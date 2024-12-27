@@ -9,17 +9,16 @@ function fetchOrders() {
             return response.json();
         })
         .then(data => {
-            console.log("Fetched Orders:", data);  // Log the fetched data
+            console.log("Fetched Orders:", data);
             const tableBody = document.getElementById("orderTableBody");
-            tableBody.innerHTML = "";  // Clear any existing rows
+            tableBody.innerHTML = "";
 
-            // If data is empty, log and return early
             if (data.length === 0) {
                 console.log("No orders to display.");
                 return;
             }
 
-            // Insert rows into the table
+
             data.forEach(order => {
                 const row = `
                     <tr>
