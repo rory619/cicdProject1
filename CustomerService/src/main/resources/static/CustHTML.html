@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order, Customer, and Book List</title>
+</head>
+<body>
+<h1>Order, Customer, and Book List</h1>
+
+<h2>Orders</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>email</th>
+        <th>name</th>
+    </tr>
+    </thead>
+    <tbody id="orderTableBody"></tbody>
+</table>
+
+<h2>Customers</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+    </tr>
+    </thead>
+    <tbody id="customerTableBody"></tbody>
+</table>
+
+<h2>Books</h2>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Title</th>
+        <th>Author</th>
+        <th>Price</th>
+    </tr>
+    </thead>
+    <tbody id="bookTableBody"></tbody>
+</table>
+
+<script>
+    function fetchOrders() {
+        const apiUrl = "http://localhost:8083/orders/all";
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById("orderTableBody");
+                tableBody.innerHTML = "";
+                data.forEach(order => {
+                    const row = `
+                            <tr>
+                                <td>${order.id}</td>
+                                <td>${order.customerId}</td>
+                                <td>${order.bookId}</td>
+                                <td>${order.quantity}</td>
+                            </tr>
+                        `;
+                    tableBody.insertAdjacentHTML("beforeend", row);
+                });
+            })
+            .catch(error => console.error("Error fetching orders:", error));
+    }
+
+    function fetchCustomers() {
+        const apiUrl = "http://localhost:8082/customers/all";
+        fetch(apiUrl)
+            .then(response => response.json())
+            .then(data => {
+                const tableBody = document.getElementById("customerTableBody");
+                tableBody.innerHTML = "";
+                data.forEach(customer => {
+                    const row = `
+                            <tr>
+                                <td>${customer.id}</td>
+                                <td>${customer.name}</td>
+                                <td>${customer.email}</td>
+                            </tr>
+                        `;
+                    tableBody.insertAdjacentHTML("beforeend", row);
+                });
+            })
+            .catch(error => console.error("Error fetching customers:", error));
+    }
+
+
+
+    window.onload = () => {
+        fetchOrders();
+        fetchCustomers();
+    };
+</script>
+</body>
+</html>
